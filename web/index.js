@@ -171,21 +171,20 @@ ComfyJS.onChat = ( user, message, flags, self, extra ) => {
 };
 
 ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
-        if( flags.broadcaster && command == "pat" ) {
+        if( flags.broadcaster && command == "chat" ) {
     highlightThisMessage( user, `${ message }`, extra );
   }
 };
-
-
-if( channel ) {
-  ComfyJS.Init( channel );
 
 ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
         if( flags.vip && command == "pat" ) {
     highlightThisMessage( user, `${ message }`, extra );
   }
 };
-  
+
+if( channel ) {
+  ComfyJS.Init( channel );
+
   fetch(
     `https://api.twitch.tv/helix/users?login=${ channel }`,
     { headers: { "Client-ID": "2odsv8xermvalbub7wipebrphqlpqv" } }
