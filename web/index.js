@@ -164,13 +164,15 @@ ComfyJS.onMessageDeleted = ( id, extra ) => {
 };
 
 ComfyJS.onChat = ( user, message, flags, self, extra ) => {
-  if( flags.highlighted ) {
+   if( flags.customReward &&
+    extra.customRewardId === "babc5759-2b5c-4624-9397-c50ba36994ed") {
     highlightThisMessage( user, message, extra );
   }
 };
 
 ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
-  if( flags.highlighted ) {
+  if( flags.customReward &&
+    extra.customRewardId === "babc5759-2b5c-4624-9397-c50ba36994ed") {
     highlightThisMessage( user, `!${ command } ${ message }`, extra );
   }
 };
