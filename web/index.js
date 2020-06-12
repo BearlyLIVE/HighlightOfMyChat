@@ -163,6 +163,12 @@ ComfyJS.onMessageDeleted = ( id, extra ) => {
   }
 };
 
+ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
+        if( flags.vip && command == "pat" ) {
+    highlightThisMessage( user, `${ message }`, extra );
+  }
+};
+
 ComfyJS.onChat = ( user, message, flags, self, extra ) => {
    if( flags.customReward &&
     extra.customRewardId === "babc5759-2b5c-4624-9397-c50ba36994ed") {
@@ -172,7 +178,6 @@ ComfyJS.onChat = ( user, message, flags, self, extra ) => {
 
 ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
         if( flags.broadcaster && command == "pat" ) {
-        if( flags.vip && command == "pat" ) {
     highlightThisMessage( user, `${ message }`, extra );
   }
 };
