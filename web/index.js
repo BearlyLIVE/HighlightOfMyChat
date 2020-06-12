@@ -171,13 +171,8 @@ ComfyJS.onChat = ( user, message, flags, self, extra ) => {
 };
 
 ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
-        if( flags.broadcaster && command == "chat" ) {
-    highlightThisMessage( user, `${ message }`, extra );
-  }
-};
-
-ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
-        if( flags.vip && command == "pat" ) {
+        if( flags.broadcaster && command == "chat" ) 
+          if( flags.vip && command == "pat" ) {
     highlightThisMessage( user, `${ message }`, extra );
   }
 };
