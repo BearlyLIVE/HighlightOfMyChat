@@ -14,7 +14,7 @@ const channel = params.get( "channel" );
 const isTTSEnabled = params.get( "tts" ) || false;
 const ttsVoice = params.get( "voice" ) || "en-US_AllisonVoice";
 const alignBottom = params.get( "bottom" ) || false;
-const textOnScreenTime = params.get("texttimer") || 30000;
+const textOnScreenTime = params.get("texttimer") || 1000;
 const badgeSets = {};
 let messageId = "";
 let cooldownTimer = null;
@@ -147,7 +147,7 @@ async function highlightThisMessage( user, message, extra ) {
     const blobUrl = URL.createObjectURL( mp3 );
     elements.source.src = blobUrl;
     const audio = elements.audio;
-    audio.pause();
+    audio.pause(5000);
     audio.load();
     audio.volume = 1;
     audio.play();
@@ -171,7 +171,7 @@ ComfyJS.onChat = ( user, message, flags, self, extra ) => {
 };
 
 ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
-    if( flags.vip && command == "pat" ) {
+    if( flags.vip && command == "pat" || flags.broadcaster && command == "pat" || flags.mod && command == "pat" ) {
     highlightThisMessage( user, `${ message }`, extra );
   }
 };
